@@ -1,41 +1,42 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
+void main(){
   runApp(MeuApp());
 }
 
-class MeuApp extends StatelessWidget {
-  MeuApp({super.key});
 
+class MeuApp extends StatelessWidget{
+  const MeuApp({super.key});
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(255, 176, 102, 189),
-          title: Center(child: Text("Nome do meu app")),
+          backgroundColor: Colors.lightGreenAccent,
+          title: Center(
+            child: Text("nome do meu app"),
+          )
         ),
         body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Text("Olá, mundo!"), Text("23/03/2026")]),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text("Olá, mundo!"), Icon(Icons.add)]),
-        ),
-      ),
-    ),
-  );
+          child: PaginaInicial(),
+        )
+      )
     );
-  }
+}
 }
 
-class PaginaInicial extends StatefulWidget {
+
+class PaginaInicial extends StatefulWidget{
   @override
   State<PaginaInicial> createState() => PaginaInicialState();
 }
 
 class PaginaInicialState extends State<PaginaInicial> {
+  String texto = "olá, mundo!";
+  int x = 0;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Center(
       child: Column(
         children: [
@@ -43,9 +44,13 @@ class PaginaInicialState extends State<PaginaInicial> {
           ElevatedButton(
             child: Text('mudar texto'),
             onPressed: () {
-              texto = "texto alterado";
-            },
-          ),
+              setState(() {
+                x++;
+                texto = "o texto fo alterado $x vezes";
+              });
+              
+            }
+            )
         ],
       ),
     );
